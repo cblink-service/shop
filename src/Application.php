@@ -20,6 +20,7 @@ class Application extends ServiceContainer
     protected function getCustomProviders(): array
     {
         return [
+            Meituan\ServiceProvider::class,
             Eleme\ServiceProvider::class,
             App\ServiceProvider::class,
         ];
