@@ -18,7 +18,7 @@ class Client extends AbstractApi
     public function getAuthUrl($appId, $businessId, $shopId)
     {
         return $this->post(sprintf('api/meituan/%s/authorize-url', $appId), [
-            'businessId' => $businessId,
+            'business_id' => $businessId,
             'shop_id' => $shopId,
         ]);
     }
@@ -34,7 +34,7 @@ class Client extends AbstractApi
     public function cancelAuthUrl($appId, $businessId, $shopId)
     {
         return $this->post(sprintf('api/meituan/%s/cancel-authorize-url', $appId), [
-            'businessId' => $businessId,
+            'business_id' => $businessId,
             'shop_id' => $shopId,
         ]);
     }
