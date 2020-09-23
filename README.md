@@ -28,7 +28,10 @@ $app = new Cblink\Service\Shop\Application($config);
 $app->app;
 
 // state参数最终会在授权跳转页面去返回
-$app->eleme->getAuthUrl('xxxx', 'state', '跳转地址');
+$app->eleme->getAuthUrl('xxxx', '授权成功的跳转地址', 'state');
+
+// 美团
+$app->meituan->getAuthUrl('xxxx', '授权成功的跳转地址', 'state');
 ```
 
 ## Contributing
