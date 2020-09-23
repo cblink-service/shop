@@ -1,6 +1,6 @@
 <?php
 
-namespace Cblink\Service\Shop\Eleme;
+namespace Cblink\Service\Shop\Meituan;
 
 use Cblink\Service\Kennel\AbstractApi;
 
@@ -14,15 +14,15 @@ class Client extends AbstractApi
      * 获取授权链接
      *
      * @param $appId
-     * @param $state
-     * @param $redirectUrl
+     * @param $businessId
+     * @param $shopId
      * @return \Cblink\Service\Kennel\HttpResponse
      */
-    public function getAuthUrl($appId, $state, $redirectUrl)
+    public function getAuthUrl($appId, $businessId, $shopId)
     {
-        return $this->get(sprintf('api/eleme/%s/auth', $appId), [
-            'redirect_url' => $redirectUrl,
-            'state' => $state,
+        return $this->get(sprintf('api/meituan/%s/authorize-url', $appId), [
+            'businessId' => $businessId,
+            'shop_id' => $shopId,
         ]);
     }
 }
