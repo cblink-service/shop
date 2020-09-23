@@ -24,8 +24,32 @@ $config = [
 
 $app = new Cblink\Service\Shop\Application($config);
 
-// 应用管理
-$app->app;
+// 创建饿了么应用
+$app->app->create([
+    'name' => '应用名称',
+    'type' => \Cblink\Service\Shop\ShopConst::TYPE_ELEME,
+    'config' => [
+        'app_id' => 'xxxx',
+        'secret' => 'xxxx',
+        'debug' => true,
+    ]
+]);
+
+// 创建美团应用
+$app->app->create([
+    'name' => '应用名称',
+    'type' => \Cblink\Service\Shop\ShopConst::TYPE_MEITUAN,
+    'config' => [
+        'developer_id' => 'xxxx',
+        'sign' => 'xxxx',
+    ]
+]);
+
+// 查询应用下的通知地址
+$app->app->notifies('应用id');
+
+// 保存或修改通知地址
+$app->app->createNotify('应用id', \Cblink\Service\Shop\ShopConst::EVENT_ORDER_CREATE, 'https://www.baodu.com');
 
 // state参数最终会在授权跳转页面去返回
 $app->eleme->getAuthUrl('xxxx', '授权成功的跳转地址', 'state');
