@@ -17,7 +17,23 @@ class Client extends AbstractApi
      */
     public function getAuthUrl($appId, $businessId, $shopId)
     {
-        return $this->get(sprintf('api/meituan/%s/authorize-url', $appId), [
+        return $this->post(sprintf('api/meituan/%s/authorize-url', $appId), [
+            'businessId' => $businessId,
+            'shop_id' => $shopId,
+        ]);
+    }
+
+    /**
+     * 获取美团取消授权链接
+     *
+     * @param $appId
+     * @param $businessId
+     * @param $shopId
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function cancelAuthUrl($appId, $businessId, $shopId)
+    {
+        return $this->post(sprintf('api/meituan/%s/cancel-authorize-url', $appId), [
             'businessId' => $businessId,
             'shop_id' => $shopId,
         ]);
