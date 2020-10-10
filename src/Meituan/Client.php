@@ -38,4 +38,40 @@ class Client extends AbstractApi
             'shop_id' => $shopId,
         ]);
     }
+
+    /**
+     * 查询门店的评价列表
+     *
+     * @param string $appId
+     * @param string $shopId
+     * @param array $params
+     * @return mixed
+     */
+    public function queryShopCommentList(string $appId, string $shopId, array $params)
+    {
+        return $this->get(sprintf('api/meituan/%s/%s/comment/list', $appId, $shopId), $params);
+    }
+
+    /**
+     * 添加门店评论的回复
+     *
+     * @param string $appId
+     * @param string $shopId
+     * @param array $params
+     * @return mixed
+     */
+    public function addCommentReply(string $appId, string $shopId, array $params)
+    {
+        return $this->post(sprintf('api/meituan/%s/%s/comment/add-reply', $appId, $shopId), $params);
+    }
+
+    /**
+     * @param string $appId
+     * @param string $shopId
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function queryShopScore(string $appId, string $shopId)
+    {
+        return $this->get(sprintf('api/meituan/%s/%s/score', $appId, $shopId));
+    }
 }
