@@ -10,6 +10,7 @@ use Cblink\Service\Kennel\ServiceContainer;
  * @property-read Eleme\Client $eleme
  * @property-read Meituan\Client $meituan
  * @property-read App\Client $app
+ * @property-read Dispatch\Meituan\Client $meituanDispatch
  */
 class Application extends ServiceContainer
 {
@@ -23,6 +24,7 @@ class Application extends ServiceContainer
             Meituan\ServiceProvider::class,
             Eleme\ServiceProvider::class,
             App\ServiceProvider::class,
+            Dispatch\Meituan\ServiceProvider::class,
         ];
     }
 }
