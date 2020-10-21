@@ -15,6 +15,8 @@ class ShopConst
     const EVENT_SHOP_CANCEL = 'shop.auth.cancel';
     const EVENT_ORDER_CREATE = 'order.create';
     const EVENT_ORDER_STATUS_UPDATE = 'order.status.update';
+    const EVENT_DISPATCH_ORDER_STATUS = 'order.dispatch.status.update';
+    const EVENT_DISPATCH_ORDER_EXCEPTION = 'order.dispatch.exception';
 
 
     const STATUS_CREATE = 1;
