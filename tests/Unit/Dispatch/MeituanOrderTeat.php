@@ -111,7 +111,10 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->location($this->appId, $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'lng'=> 'example',
+                    'lat'=> 1
+                ],
             ]);
 
         $ApiClient = \Mockery::mock(Api::class);
@@ -120,7 +123,10 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->request(sprintf('api/dispatch/meituan/%s/location', $this->appId), $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'lng'=> 'example',
+                    'lat'=> 1
+                ],
             ]);
 
         $this->assertSame(
@@ -146,7 +152,11 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->cancelOrder($this->appId, $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'mt_peisong_id'=> 'example',
+                    'delivery_id'=> 1000,
+                    'order_id'=>'example'
+                ],
             ]);
 
         $ApiClient = \Mockery::mock(Api::class);
@@ -155,7 +165,11 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->request(sprintf('api/dispatch/meituan/%s/cancel', $this->appId), $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'mt_peisong_id'=> 'example',
+                    'delivery_id'=> 1000,
+                    'order_id'=>'example'
+                ],
             ]);
 
         $this->assertSame(
@@ -199,7 +213,11 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->createByShop($this->appId, $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'mt_peisong_id'=> 'example',
+                    'delivery_id'=> 1000,
+                    'order_id'=>'example'
+                ],
             ]);
 
         $ApiClient = \Mockery::mock(Api::class);
@@ -208,7 +226,11 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             ->request(sprintf('api/dispatch/meituan/%s/createByShop', $this->appId), $data)
             ->andReturn([
                 'err_code' => '0',
-                'data' => [],
+                'data' => [
+                    'mt_peisong_id'=> 'example',
+                    'delivery_id'=> 1000,
+                    'order_id'=>'example'
+                ],
             ]);
 
         $this->assertSame(
