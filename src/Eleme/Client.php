@@ -25,4 +25,16 @@ class Client extends AbstractApi
             'state' => $state,
         ]);
     }
+
+    /**
+     * 查询门店订单的评价列表
+     *
+     * @param string $appId
+     * @param array $params
+     * @return mixed
+     */
+    public function queryShopOrderCommentList(string $appId, array $params)
+    {
+        return $this->get(sprintf('api/eleme/%s/orderComment/list', $appId), $params);
+    }
 }
