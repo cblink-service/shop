@@ -42,7 +42,7 @@ class ElemeOrderTeat extends \PHPUnit\Framework\TestCase
             $config = include $fileName;
         }
         $this->appId = $config['uuid'];
-        var_dump($config['config']);
+
         $this->app = new Application($config['config']);
     }
 
