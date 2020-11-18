@@ -19,5 +19,5 @@ return [
         'key' => "4V8jF9Ynz9xjoscP83bLgULRO4zrsJ",
     ],
 
-    'uuid' => 'ydapoarufyexhypxm9qupwwjtseo6gnk',
+    'uuid' => 'faqw12mppxhc1hnntr4x4apfryuhqken',
 ];
