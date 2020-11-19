@@ -37,4 +37,16 @@ class Client extends AbstractApi
     {
         return $this->get(sprintf('api/eleme/%s/orderComment/list', $appId), $params);
     }
+
+    /**
+     * 查询门店订单ids查询评价列表
+     *
+     * @param string $appId
+     * @param array $params
+     * @return mixed
+     */
+    public function queryOrderRatesByOrderIds(string $appId, array $params)
+    {
+        return $this->get(sprintf('api/eleme/%s/orderCommentByOrderIds/list', $appId), $params);
+    }
 }
