@@ -64,7 +64,7 @@ class ElemeOrderTeat extends \PHPUnit\Framework\TestCase
         $client = \Mockery::mock($this->app->eleme);
 
         $client->expects()
-            ->check($this->appId, $params)
+            ->queryShopOrderCommentList($this->appId, $params)
             ->andReturn([
                 'err_code' => '0',
                 'data' => [],
@@ -81,7 +81,42 @@ class ElemeOrderTeat extends \PHPUnit\Framework\TestCase
 
        $this->assertSame(
             $ApiClient->request(sprintf('api/eleme/%s/orderComment/list', $this->appId), $params),
-            $client->check($this->appId, $params)
+            $client->queryShopOrderCommentList($this->appId, $params)
+        );
+    }
+
+    /**
+     * 查询配送服务
+     */
+    public function testOrderIdsComment()
+    {
+        // 参数
+        $params = [
+            'orderIds' => []
+        ];
+
+        // 模拟类
+        $client = \Mockery::mock($this->app->eleme);
+
+        $client->expects()
+            ->queryOrderRatesByOrderIds($this->appId, $params)
+            ->andReturn([
+                'err_code' => '0',
+                'data' => [],
+            ]);
+
+        $ApiClient = \Mockery::mock(Api::class);
+
+        $ApiClient->expects()
+            ->request(sprintf('api/eleme/%s/orderCommentByOrderIds/list', $this->appId), $params)
+            ->andReturn([
+                'err_code' => '0',
+                'data' => [],
+            ]);
+
+        $this->assertSame(
+            $ApiClient->request(sprintf('api/eleme/%s/orderCommentByOrderIds/list', $this->appId), $params),
+            $client->queryOrderRatesByOrderIds($this->appId, $params)
         );
     }
 }
