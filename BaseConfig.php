@@ -19,5 +19,6 @@ return [
         'key' => "4V8jF9Ynz9xjoscP83bLgULRO4zrsJ",
     ],
 
-    'uuid' => 'faqw12mppxhc1hnntr4x4apfryuhqken',
+    'uuid' => 'ydapoarufyexhypxm9qupwwjtseo6gnk',
+    'shop_id' => '25dd3119d0ef4eacb44f7f8b2181eb88',
 ];
