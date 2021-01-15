@@ -74,4 +74,24 @@ class Client extends AbstractApi
     {
         return $this->get(sprintf('api/meituan/%s/%s/score', $appId, $shopId));
     }
+
+    /**
+     * @param string $appId
+     * @param string $shopId
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function queryShippingList(string $appId, string $shopId)
+    {
+        return $this->get(sprintf('api/meituan/%s/%s/shippingList', $appId, $shopId));
+    }
+
+    /**
+     * @param string $appId
+     * @param string $shopId
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function queryShippingFetch(string $appId, string $shopId)
+    {
+        return $this->get(sprintf('api/meituan/%s/%s/shippingFetch', $appId, $shopId));
+    }
 }
