@@ -62,4 +62,16 @@ class Client extends AbstractApi
     {
         return $this->post(sprintf('api/dispatch/meituan/%s/cancel', $appId), $params);
     }
+
+    /**
+     * 预下单
+     *
+     * @param $appId
+     * @param array $params
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function preCreateOrderByShop($appId, array $params)
+    {
+        return $this->post(sprintf('api/dispatch/meituan/%s/preCreateOrderByShop', $appId), $params);
+    }
 }
