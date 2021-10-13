@@ -7,5 +7,5 @@ composer.lock
 .subsplit
 .php_cs.cache
 config/
-.BaseConfig.php
+BaseConfig.php
 .phpunit.result.cache
