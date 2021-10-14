@@ -32,7 +32,7 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             'app_id' => 0,
             'secret' => "",
             'key' => "",
-            'meituan_uuid' => "",
+            'uuid' => "1",
         ];
 
         $fileName = __DIR__ . '/../../../BaseConfig.php';
@@ -42,7 +42,7 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
         }
         $this->appId = $config['uuid'];
 
-        $this->dispatch = new Application($config['config']);
+        $this->dispatch = new Application($config);
     }
 
     /**
@@ -295,5 +295,66 @@ class MeituanOrderTeat extends \PHPUnit\Framework\TestCase
             $client->preCreateOrderByShop($this->appId, $data)
         );
 
+    }
+
+    public function testOrderStatus()
+    {
+        $data = [
+            'delivery_id' => '',
+            'mt_peisong_id' => '',  // 美团配送内部订单 id
+        ];
+        // 模拟类
+        $client = \Mockery::mock($this->dispatch->meituanDispatch);
+
+        $client->expects()
+            ->orderStatus($this->appId, $data)
+            ->andReturn([
+                'err_code' => '0',
+                'data' => [
+                    "cancel_reason" => "",
+                    "cancel_reason_id" => 0,
+                    "coupons_amount" => 0,
+                    "courier_name" => "",
+                    "courier_phone" => "",
+                    "delivery_distance" => 1,
+                    "delivery_fee" => 0.02,
+                    "delivery_id" => "13",
+                    "mt_peisong_id" => "1634202466570001841",
+                    "operate_time" => 1634202466,
+                    "order_id" => "13",
+                    "pay_amount" => 0.02,
+                    "settlement_mode_code" => 2,
+                    "status" => 0
+                ],
+            ]);
+
+        $ApiClient = \Mockery::mock(Api::class);
+
+        $ApiClient->expects()
+            ->request(sprintf('api/dispatch/meituan/%s/orderStatus', $this->appId), $data)
+            ->andReturn([
+                'err_code' => '0',
+                'data' => [
+                    "cancel_reason" => "",
+                    "cancel_reason_id" => 0,
+                    "coupons_amount" => 0,
+                    "courier_name" => "",
+                    "courier_phone" => "",
+                    "delivery_distance" => 1,
+                    "delivery_fee" => 0.02,
+                    "delivery_id" => "13",
+                    "mt_peisong_id" => "1634202466570001841",
+                    "operate_time" => 1634202466,
+                    "order_id" => "13",
+                    "pay_amount" => 0.02,
+                    "settlement_mode_code" => 2,
+                    "status" => 0
+                ],
+            ]);
+
+        $this->assertSame(
+            $ApiClient->request(sprintf('api/dispatch/meituan/%s/orderStatus', $this->appId), $data),
+            $client->orderStatus($this->appId, $data)
+        );
     }
 }
